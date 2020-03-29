@@ -30,6 +30,10 @@ namespace CoronavirusTestWebsite.Pages
             var CountrySummaryList = CoronaDataRequester.GetSummary();
 
             SummaryTable = PageHelper.ToDataTable(CountrySummaryList);
+
+            List<Case> ListOfAllCasesInUK = CoronaDataRequester.GetListOfCasesSinceDayOne(new List<string>() { "united-kingdom" });
+
+            ;
         }
         public List<Case> GetListOfAllConfirmedCasesInUnitedStates()
         {

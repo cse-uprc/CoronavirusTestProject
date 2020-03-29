@@ -15,6 +15,7 @@ namespace CoronavirusWebHandler
     public static class CoronaDataRequester
     {
         private static string COVID19_API_URL = "https://api.covid19api.com/";
+        private static string GetURL(string EndpointName) => COVID19_API_URL + EndpointName; 
 
         public static List<Case> GetListOfCasesSinceDayOne(List<string> CountrySlugs)
         // Returns all cases since Day one of COVID-19 for each country in the list passed.
@@ -32,7 +33,7 @@ namespace CoronavirusWebHandler
 
         public static List<Country> GetSummary()
         {
-            string CountryListJSON = GetRequest(COVID19_API_URL + "summary");
+            string CountryListJSON = GetRequest(GetURL("summary"));
             var CountryListWrapper = JsonSerializer.Deserialize<SummaryWrapper>(CountryListJSON);
 
             return CountryListWrapper.Countries;

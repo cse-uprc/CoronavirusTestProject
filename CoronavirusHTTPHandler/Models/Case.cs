@@ -12,10 +12,10 @@ namespace CoronavirusWebHandler.Models
         public string Province { get; set; }
         
         [JsonProperty(PropertyName = "Lat")]
-        public double Latitude { get; set; }
+        public decimal Latitude { get; set; }
         
         [JsonProperty(PropertyName = "Lon")]
-        public double Longitude { get; set; }
+        public decimal Longitude { get; set; }
         
         [JsonProperty(PropertyName = "Date")]
         public DateTime DateOfConfirmation { get; set; }

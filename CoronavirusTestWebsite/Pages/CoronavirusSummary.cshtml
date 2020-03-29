@@ -4,7 +4,56 @@
     ViewData["Title"] = "Home page";
 }
 
+<style>
+    .line {
+        fill: none;
+        stroke: steelblue;
+        stroke-width: 2px;
+    }
+</style>
+
 <div class="text-center">
     Lorem ipsum dolor sit amet.
     <hr />
+
 </div>
+
+<div>
+    <svg id="lineChart"></svg>
+</div>
+
+<!-- D3 script stuff below pretty pretty please with sugar on top -->
+
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+<script>
+
+
+    var data = [50, 90, 30, 10, 70, 20];
+
+    var width = 500;
+    var height = 100;
+
+    var svg = d3.select("#lineChart")
+        .attr("width", width)
+        .attr("height", height);
+
+    var x = d3.scale.linear()
+        .range([0, width]);
+
+    var y = d3.scale.linear()
+        .range([height, 0]);
+
+    x.domain([0, data.length]);
+    y.domain([0, d3.max(data, function (d) { return d; })]);
+
+
+    var line = d3.svg.line()
+        .x(function (d, i) { return x(i); })
+        .y(function (d) { return y(d); });
+
+    svg.append("path")
+        .datum(data)
+        .attr("class", "line")
+        .attr("d", line);
+</script>
