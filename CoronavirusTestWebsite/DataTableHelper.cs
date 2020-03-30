@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CoronavirusTestWebsite
 {
-    public static class PageHelper
+    public static class DataTableHelper
     {
         public static DataTable ToDataTable<T>(List<T> ourDataSet)
         // converts a generic list of like-typed objects to a data table that can be displayed
